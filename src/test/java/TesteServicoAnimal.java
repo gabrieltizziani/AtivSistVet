@@ -30,6 +30,37 @@ public class TesteServicoAnimal {
         Assertions.assertEquals("Espuleta", ServicoAnimal.buscarIdAnimal(1).getNomeAnimal());
     }
 
+    @Test
+    public void excluirAnimal(){
+        Animal animal = new Animal();
+        animal.setIdAnimal(1);
+        animal.setNomeAnimal("Espuleta");
+        animal.setTipoAnimal("Gato");
+        animal.setRacaAnimal("Desconhecida");
+        ServicoAnimal.cadastarAnimal(animal);
+
+        Assertions.assertTrue(ServicoAnimal.excluirAnimal(1));
+        Assertions.assertEquals(0, ServicoAnimal.getListaAnimal().size());
+    }
+
+    @Test
+    public void editarAnimal(){
+        Animal animal = new Animal();
+        animal.setIdAnimal(1);
+        animal.setNomeAnimal("Espuleta");
+        animal.setTipoAnimal("Gato");
+        animal.setRacaAnimal("Desconhecida");
+        if (ServicoAnimal.validarAnimal(animal) == 1){
+            if (ServicoAnimal.cadastarAnimal(animal) == 1){
+                animal.setIdAnimal(1);
+                animal.setNomeAnimal("Espuleta");
+                animal.setTipoAnimal("Gato");
+                animal.setRacaAnimal("Desconhecida");
+                Assertions.assertTrue(ServicoAnimal.alterarAnimal(animal));
+            }
+        }
+    }
+
 
 
 }
