@@ -61,6 +61,20 @@ public class TesteServicoAnimal {
         }
     }
 
+    @Test
+    public void criarAninal(){
+        Animal animal = new Animal();
+        animal.setIdAnimal(1);
+        animal.setNomeAnimal("Espuleta");
+        animal.setTipoAnimal("Gato");
+        animal.setRacaAnimal("Desconhecida");
+        animal.setIdadeAnimal(2);
+
+        Assertions.assertEquals(1, ServicoAnimal.validarAnimal(animal));
+        Assertions.assertEquals(1, ServicoAnimal.cadastarAnimal(animal));
+
+    }
+
 
 
 }
